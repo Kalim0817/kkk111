@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<title> App 4 by KS </title>
+		<style>
+			* { font-size: 50px; }
+			body { background-color:orange; }
+		</style>
+		<script>  
+			function show()
+			{
+				event.preventDefault();
+				let name = document.getElementById("name");
+				let ans = document.getElementById("ans");
+
+				if (name.value == "")
+				{
+					alert("name cannot be empty");
+					ans.innerHTML = "";
+					name.focus();
+					return;
+				}
+
+				else if (name.value.trim() == "")
+				{
+					alert("name cannot be spaces");
+					name.value = "";
+					ans.innerHTML = "";
+					name.focus();
+					return;
+				}
+				else if (! name.value.match(/^[A-Za-z ]+$/))
+				{
+					alert("name should only be alphabets");
+					name.value = "";
+					ans.innerHTML = "";
+					name.focus();
+					return;
+				}
+				let d = new Date();
+				let hr = d.getHours();
+				let reply = "";
+				if (hr < 12)		reply = "Good Morning ";
+				else if (hr < 16)	reply = "Good Afternoon ";
+				else			reply = "Good Evening ";
+				let msg = reply + name.value;
+				ans.innerHTML = msg;
+			}
+		</script>
+	</head>
+	<body>
+		<center>
+			<h1> Welcome App by KS </h1>
+			<form onsubmit="show()">
+				<input type = "text" placeholder="        enter your name " id="name"/>
+				<br><br>
+				<input type= "submit" />
+			</form>
+			<h1 id="ans" style="color:black;"></h1>		
+		</center>
+	</body>
+
+
+</html>
